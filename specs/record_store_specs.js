@@ -44,9 +44,25 @@ describe("RecordStore", function(){
       assert.deepStrictEqual(actual, expected);
     })
 
+    it('should be able to sell a record and change the shop balance', function(){
+      recordStore.addRecord(record1);
+      recordStore.addRecord(record2);
+      recordStore.sellRecord(record1);
+      assert.deepStrictEqual(recordStore.balance, 2);
+    });
+
+    it('should be able to report the "financial situation" of the store', function(){
+      recordStore.addRecord(record1);
+      recordStore.addRecord(record2);
+      recordStore.addRecord(record3);
+      recordStore.addRecord(record4);
+      recordStore.sellRecord(record1);
+      let actual = recordStore.reportFinances();
+      let expected = "The balance is 2. The inventory value is 14"
+      assert.deepStrictEqual(actual, expected )
+    })
+
   });
-  // Create a method that prints out the Record's properties as a string.
-  // Create a method that lists the Record Shop's inventory - ie implements the above method on every record in the shop.
-  // Create a method so the Record Store can sell a Record and adjusts the Store's balance to account for the Record being sold.
-  // Create a method that reports the financial situation of the Store, showing the balance and value of inventory.
-  // Create a method that allows the store to view all Records of a given Genre.
+
+  // // Create a method that reports the financial situation of the Store, showing the balance and value of inventory.
+  // // Create a method that allows the store to view all Records of a given Genre.

@@ -15,11 +15,15 @@ RecordStore.prototype.listInventory = function () {
   // let newArray = _.map(this.inventory, function(record){return record.printProperties();
   return _.map(this.inventory, record => record.printProperties());
 };
-//
-// _.map([4, 8], square);
 
+RecordStore.prototype.sellRecord = function (record) {
+  this.balance += record.price;
+};
 
-
+RecordStore.prototype.reportFinances = function() {
+  return "The balance is " + this.balance +
+   ". The inventory value is " + _.reduce(this.inventory, (accumulator, item) => accumulator += item.price, 0);
+};
 
 
 module.exports = RecordStore;
