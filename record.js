@@ -7,5 +7,10 @@ const Record = function(artist, title, genre, price){
   this.price = price;
 }
 
+Record.prototype.printProperties = function() {
+  return [this.artist, this.title, this.genre, this.price.toString()];
+};
+
+
 
 module.exports = Record;

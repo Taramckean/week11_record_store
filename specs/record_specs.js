@@ -29,9 +29,10 @@ describe("Record", function(){
       assert.deepStrictEqual(record4.price, 4)
     });
 
+    it('should be able to print out properites as a string', function(){
+      let expected = record3.printProperties();
+      let actual = ["Sean Paul", "Like Glue", "Dancehall", "5"];
+      assert.deepStrictEqual(expected, actual)
+    })
+
   });
-// Part A
-// Create a Record object that has an Artist, Title, Genre, and Price
-// Create a Record Store that has a Name, City and an Inventory.
-// Give the Record Store a Balance.
-// Add some Records to the Store's Inventory.
