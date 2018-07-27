@@ -12,6 +12,7 @@ describe("Customer", function(){
     record4 = new Record("Toots and The Maytals","54-46 Was My Number", "Ska", 4);
     record5 = new Record("Beenie Man","King of the Dancehall", "Dancehall", 3);
     customer1 = new Customer("Tara", 20);
+    customer2 = new Customer("Richard", 30);
   });
 
   it('should have a name', function(){
@@ -78,13 +79,23 @@ describe("Customer", function(){
     assert.deepStrictEqual(actual, record3);
   })
 
-  // it('should be able to sort collection by ascending value', function(){
-  //   customer1.buy(record1);
-  //   customer1.buy(record2);
-  //   customer1.buy(record3);
-  //   customer1.buy(record4);
-  //   customer1.buy(record5);
-  //   let actual = customer1.sortByLeastValuable()[0];
-  //   assert.deepStrictEqual(actual, record1);
-  // })
+  it('should be able to sort collection by ascending value', function(){
+    customer1.buy(record1);
+    customer1.buy(record2);
+    customer1.buy(record3);
+    customer1.buy(record4);
+    customer1.buy(record5);
+    let actual = customer1.sortByLeastValuable()[0];
+    assert.deepStrictEqual(actual, record1);
+  })
+
+  it('should be able to compare the value of one customers collection with another', function(){
+    customer1.buy(record1);
+    customer1.buy(record2);
+    customer1.buy(record3);
+    customer2.buy(record4);
+    customer2.buy(record5);
+    let actual = customer1.compareDifferenceInCollectionValue(customer2);
+    assert.deepStrictEqual(actual, customer1);
+  })
 });

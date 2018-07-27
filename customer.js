@@ -45,5 +45,12 @@ Customer.prototype.sortByLeastValuable = function () {
   return _.sortBy(this.collection, 'price');
 };
 
+Customer.prototype.compareDifferenceInCollectionValue = function (customer) {
+  let a = this.calculateCollectionTotalValue();
+  let b = customer.calculateCollectionTotalValue();
+    if (a > b){return this;}
+      else if (b > a) { return customer;}
+        return "Both are good";
+};
 
 module.exports = Customer;
