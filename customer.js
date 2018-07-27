@@ -21,4 +21,29 @@ Customer.prototype.calculateCollectionTotalValue = function () {
   return _.reduce(this.collection, (accumulator, record) => accumulator += record.price, 0);
 };
 
+
+Customer.prototype.calculateRecordValueByGenre = function (genre) {
+  let genreRecords = _.filter(this.inventory, {"genre": genre});
+  return _.reduce(genreRecords, (accumulator, record) => accumulator += record.price, 0);
+};
+
+Customer.prototype.calculateRecordValueByGenre = function (genre) {
+genreRecords =  _.filter(this.collection, {"genre": genre});
+  return _.reduce(genreRecords, (accumulator, record) => accumulator += record.price, 0);
+};
+
+Customer.prototype.findMostValuableRecord = function () {
+  return _.maxBy(this.collection, 'price');
+};
+
+Customer.prototype.sortByMostValuable = function () {
+  let sortedArray =  _.sortBy(this.collection, 'price');
+  return sortedArray.reverse();
+};
+
+Customer.prototype.sortByLeastValuable = function () {
+  return _.sortBy(this.collection, 'price');
+};
+
+
 module.exports = Customer;

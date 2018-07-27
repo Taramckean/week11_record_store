@@ -55,9 +55,36 @@ describe("Customer", function(){
   it('should be able to view their total value of records for a certain genre', function(){
     customer1.buy(record3);
     customer1.buy(record5);
-    let actual = customer1.calculateRecordValueByGenre('Dancehall');
+    let actual = customer1.calculateRecordValueByGenre("Dancehall");
     assert.deepStrictEqual(actual, 8);
   })
 
+  it('should be able to find their most valuable record', function(){
+    customer1.buy(record1);
+    customer1.buy(record2);
+    customer1.buy(record3);
+    customer1.buy(record4);
+    customer1.buy(record5);
+    assert.deepStrictEqual(customer1.findMostValuableRecord(), record3);
+  })
 
+  it('should be able to sort collection by descending value', function(){
+    customer1.buy(record1);
+    customer1.buy(record2);
+    customer1.buy(record3);
+    customer1.buy(record4);
+    customer1.buy(record5);
+    let actual = customer1.sortByMostValuable()[0];
+    assert.deepStrictEqual(actual, record3);
+  })
+
+  // it('should be able to sort collection by ascending value', function(){
+  //   customer1.buy(record1);
+  //   customer1.buy(record2);
+  //   customer1.buy(record3);
+  //   customer1.buy(record4);
+  //   customer1.buy(record5);
+  //   let actual = customer1.sortByLeastValuable()[0];
+  //   assert.deepStrictEqual(actual, record1);
+  // })
 });
