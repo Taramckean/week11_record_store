@@ -10,6 +10,7 @@ describe("RecordStore", function(){
       record2 = new Record("The Temptations","Papa Was A Rolling Stone", "Soul", 3);
       record3 = new Record("Sean Paul", "Like Glue", "Dancehall", 5);
       record4 = new Record("Toots and The Maytals","54-46 Was My Number", "Ska", 4);
+      record5 = new Record("Beenie Man","King of the Dancehall", "Dancehall", 3);
       recordStore = new RecordStore("Stevie's Store", "Glasgow");
     });
 
@@ -42,7 +43,7 @@ describe("RecordStore", function(){
       let actual = recordStore.listInventory()[0];
       let expected =  ['Shakira', 'Hips Dont Lie', 'Pop', '2']
       assert.deepStrictEqual(actual, expected);
-    })
+    });
 
     it('should be able to sell a record and change the shop balance', function(){
       recordStore.addRecord(record1);
@@ -60,9 +61,16 @@ describe("RecordStore", function(){
       let actual = recordStore.reportFinances();
       let expected = "The balance is 2. The inventory value is 14"
       assert.deepStrictEqual(actual, expected )
-    })
+    });
+
+    it('should show all the records of a given genre', function(){
+      recordStore.addRecord(record1);
+      recordStore.addRecord(record2);
+      recordStore.addRecord(record3);
+      recordStore.addRecord(record4);
+      recordStore.addRecord(record5);
+      let expected = [record3, record5]
+      assert.deepStrictEqual(recordStore.findRecordByGenre("Dancehall"), expected);
+    });
 
   });
-
-  // // Create a method that reports the financial situation of the Store, showing the balance and value of inventory.
-  // // Create a method that allows the store to view all Records of a given Genre.
